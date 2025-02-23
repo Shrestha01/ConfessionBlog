@@ -4,7 +4,7 @@ import { getDatabase, ref, set, onValue } from "firebase/database";
 
 // Your Firebase config (replace with your actual config)
 const firebaseConfig = {
-  apiKey: "AIzaSyCcsl3Izt6CIkoRuD26iYYTSdUr0pVQv68",
+  apiKey: import.meta.env.VITE_API_KEY,
   authDomain: "login-4c411.firebaseapp.com",
   databaseURL: "https://login-4c411.firebaseio.com",
   projectId: "login-4c411",
