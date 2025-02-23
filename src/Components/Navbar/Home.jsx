@@ -4,7 +4,7 @@ import ConfessionList from "../ConfessionList";
 
 const Home = () => {
   return (
-    <div className="bg-gradient-to-r from-blue-500 to-purple-400 h-screen">
+    <div className="bg-gradient-to-r from-blue-500 to-purple-400 ">
       <div className="container flex flex-col sm:flex-row">
         <div className="w-full sm:w-1/5 mt-6 ">
           <LeftSidebar />
