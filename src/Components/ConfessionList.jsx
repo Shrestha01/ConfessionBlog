@@ -26,6 +26,7 @@ const ConfessionList = () => {
             <div className=" border-4 rounded p-2 h-72  " key={key}>
               <div className=" text-white w-full break-words overflow-auto">
                 {val.text}
+                {key}
               </div>
             </div>
           );
