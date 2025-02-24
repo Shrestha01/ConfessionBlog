@@ -3,18 +3,25 @@ import { useState } from "react";
 import { formSchema } from "./FormSchema/ConfessionDataSchema";
 import { Formik, Form, ErrorMessage, Field } from "formik";
 import { db, ref, set } from "./Firebase/firebaseConfig";
+import { monthList } from "./config/month";
+import { v4 as uuidv4 } from "uuid";
 
 const LeftSidebar = () => {
+  const createdAt = new Date().getTime();
+  let date = new Date(createdAt);
+  // console.log(date);
+  // console.log(date.getMonth());
+  // console.log(monthList[date.getMonth()]);
+
   return (
     <div className="w-full">
       <Formik
         initialValues={{ name: "", text: "" }}
         validationSchema={formSchema}
-        onSubmit={(values) => {
-          const uuid = new Date().getTime();
+        onSubmit={({ name, text }) => {
           try {
-            const confessionRef = ref(db, "confessions/" + uuid);
-            set(confessionRef, values);
+            const confessionRef = ref(db, "confessions/" + uuidv4());
+            set(confessionRef, { createdAt, name, text });
             console.log("Data Saved Successfully");
           } catch (error) {
             console.log(error);
