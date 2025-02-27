@@ -5,10 +5,11 @@ import { Formik, Form, ErrorMessage, Field } from "formik";
 import { db, ref, set } from "./Firebase/firebaseConfig";
 import { monthList } from "./config/month";
 import { v4 as uuidv4 } from "uuid";
+import { ToastContainer, toast } from "react-toast";
 
 const LeftSidebar = () => {
   const createdAt = new Date().getTime();
-  let date = new Date(createdAt);
+
   // console.log(date);
   // console.log(date.getMonth());
   // console.log(monthList[date.getMonth()]);
@@ -20,11 +21,12 @@ const LeftSidebar = () => {
         validationSchema={formSchema}
         onSubmit={({ name, text }) => {
           try {
-            const confessionRef = ref(db, "confessions/" + uuidv4());
-            set(confessionRef, { createdAt, name, text });
-            console.log("Data Saved Successfully");
+            const uID = uuidv4();
+            const confessionRef = ref(db, "confessions/" + uID);
+            set(confessionRef, { uID, createdAt, name, text });
+            toast.success("Data Saved Successfully");
           } catch (error) {
-            console.log(error);
+            toast.error("Data inserstion Failed");
           }
         }}
       >
@@ -41,11 +43,15 @@ const LeftSidebar = () => {
             <ErrorMessage name="text" />
           </div>
 
-          <button type="submit" className="border-2 rounded text-white">
+          <button
+            type="submit"
+            className="border-2 rounded-xl px-4 py-2 text-white hover:text-black transition-transform duration-300 hover:scale-110"
+          >
             Submit
           </button>
         </Form>
       </Formik>
+      <ToastContainer delay={2500} />
     </div>
   );
 };

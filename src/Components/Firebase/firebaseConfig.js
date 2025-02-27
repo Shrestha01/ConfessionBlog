@@ -1,6 +1,16 @@
 // firebase.js
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, set, onValue } from "firebase/database";
+import {
+  getDatabase,
+  ref,
+  query,
+  orderByChild,
+  equalTo,
+  get,
+  onValue,
+  set,
+  remove,
+} from "firebase/database";
 
 // Your Firebase config (replace with your actual config)
 const firebaseConfig = {
@@ -17,4 +27,4 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
 
-export { db, ref, set, onValue };
+export { db, ref, set, onValue, query, orderByChild, equalTo, get, remove };
