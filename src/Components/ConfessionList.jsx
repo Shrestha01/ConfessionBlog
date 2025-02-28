@@ -58,6 +58,8 @@ const ConfessionList = () => {
       }
 
       setConfession(confessionL); // setting confession on array
+
+      console.log(confession);
     });
   }, []);
 
@@ -72,7 +74,7 @@ const ConfessionList = () => {
 
           return (
             <div
-              className=" border-2 rounded-xl p-2 h-72 overflow-auto  "
+              className=" border-2 rounded-xl p-2 h-72 overflow-auto hover:bg-purple-900  "
               key={key}
             >
               <div className=" text-white w-full break-words overflow-auto p-4">
